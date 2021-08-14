@@ -54,11 +54,15 @@ class PairStringList implements List {
 
     @Override
     public boolean addAll(Collection c) {
-        return false;
+        list.addAll(c);
+        list.addAll(c);
+        return true;
     }
 
     @Override
     public boolean addAll(int index, Collection c) {
+        list.addAll(index, c);
+        list.addAll(index, c);
         return false;
     }
 
@@ -70,21 +74,30 @@ class PairStringList implements List {
 
     @Override
     public Object get(int index) {
-        return null;
+        return list.get(index);
     }
 
     @Override
     public Object set(int index, Object element) {
-        return null;
+        if (index % 2 == 0) {
+            list.set(index, element);
+            list.set(index + 1, element);
+        } else {
+            list.set(index, element);
+            list.set(index - 1, element);
+        }
+        return list;
     }
 
     @Override
     public void add(int index, Object element) {
-        list.add(index + indexShift, element);
-        list.add(index + indexShift, element);
-        indexShift++;
-//        if (index != 0) {
-//        }
+        if (index % 2 == 0) {
+            list.add(index, element);
+            list.add(index, element);
+        } else {
+            list.add(index + 1, element);
+            list.add(index + 1, element);
+        }
     }
 
     @Override
