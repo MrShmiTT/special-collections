@@ -39,13 +39,6 @@ class PairStringList implements List {
     }
 
     @Override
-    public boolean add(Object o) {
-        list.add(o);
-        list.add(o);
-        return true;
-    }
-
-    @Override
     public boolean remove(Object o) {
         list.remove(o);
         list.remove(o);
@@ -53,16 +46,37 @@ class PairStringList implements List {
     }
 
     @Override
-    public boolean addAll(Collection c) {
-        list.addAll(c);
-        list.addAll(c);
+    public boolean add(Object o) {
+        list.add(o);
+        list.add(o);
         return true;
     }
 
     @Override
+    public void add(int index, Object element) {
+        if (index % 2 == 0) {
+            list.add(index, element);
+            list.add(index, element);
+        } else {
+            list.add(index + 1, element);
+            list.add(index + 1, element);
+        }
+    }
+
+    @Override
+    public boolean addAll(Collection c) {
+        for (Object o : c) {
+            add(o);
+        }
+        return false;
+    }
+
+    @Override
     public boolean addAll(int index, Collection c) {
-        list.addAll(index, c);
-        list.addAll(index, c);
+        for (Object o : c) {
+            add(index, o);
+            index = index + 2;
+        }
         return false;
     }
 
@@ -87,17 +101,6 @@ class PairStringList implements List {
             list.set(index - 1, element);
         }
         return list;
-    }
-
-    @Override
-    public void add(int index, Object element) {
-        if (index % 2 == 0) {
-            list.add(index, element);
-            list.add(index, element);
-        } else {
-            list.add(index + 1, element);
-            list.add(index + 1, element);
-        }
     }
 
     @Override
