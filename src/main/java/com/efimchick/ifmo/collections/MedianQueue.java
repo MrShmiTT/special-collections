@@ -1,10 +1,9 @@
 package com.efimchick.ifmo.collections;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.PriorityQueue;
 
-class MedianQueue extends ArrayList {
+class MedianQueue extends PriorityQueue {
 
     public static void printMedian(int[] a) {
         double med = a[0];
@@ -17,7 +16,6 @@ class MedianQueue extends ArrayList {
 //        smaller.add(a[0]);
 //        System.out.println(med);
         // reading elements of stream one by one
-
 
         /* At any time we try to make heaps balanced and
             their sizes differ by at-most 1. If heaps are

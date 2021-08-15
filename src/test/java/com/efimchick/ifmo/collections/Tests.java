@@ -102,45 +102,45 @@ public class Tests {
 
     }
 
-//    @Test
-//    public void testMedianQueue() {
-//
-//        testCaseMQ(1, "1 0 2", 0, 1, 2);
-//        testCaseMQ(1, "1 0 2", 0, 2, 1);
-//        testCaseMQ(1, "1 0 2", 1, 0, 2);
-//        testCaseMQ(1, "1 0 2", 1, 2, 0);
-//        testCaseMQ(1, "1 0 2", 2, 0, 1);
-//        testCaseMQ(1, "1 0 2", 2, 1, 0);
-//
-//        testCaseMQ(2, "2 1 3 0 4", 0, 1, 2, 3, 4);
-//        testCaseMQ(0, "0 1", 0, 1);
-//
-//        testCaseMQ(4, "4 5 3 6 2 7 1 8 0 9", 0, 8, 3, 9, 4, 6, 2, 1, 7, 5);
-//        testCaseMQ(4, "4 5 3 6 2 7 1 8 0 9", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
-//        testCaseMQ(4, "4 3 5 2 6 1 7 0 8", 0, 1, 2, 3, 4, 5, 6, 7, 8);
-//    }
-//
-//    private void testCaseMQ(final int expectedMedian, final String expectedQueue, final Integer... elements) {
-//        Queue<Integer> queue = new MedianQueue();
-//        assertEquals(0, queue.size());
-//
-//        stream(elements).forEach(queue::offer);
-//
-//        assertEquals(Integer.valueOf(expectedMedian), queue.peek());
-//        assertEquals(elements.length, queue.size());
-//        assertEquals(Integer.valueOf(expectedMedian), queue.peek());
-//        assertEquals(expectedQueue, pollQueueToString(queue));
-//        assertEquals(0, queue.size());
-//
-//        final ArrayList<Integer> elementsList = new ArrayList<>(asList(elements));
-//        shuffle(elementsList);
-//        elementsList.forEach(queue::offer);
-//
-//        assertEquals("Fail on " + elementsList, Integer.valueOf(expectedMedian), queue.peek());
-//        assertEquals(elements.length, queue.size());
-//        assertEquals(Integer.valueOf(expectedMedian), queue.peek());
-//        assertEquals(expectedQueue, pollQueueToString(queue));
-//    }
+    @Test
+    public void testMedianQueue() {
+
+        testCaseMQ(1, "1 0 2", 0, 1, 2);
+        testCaseMQ(1, "1 0 2", 0, 2, 1);
+        testCaseMQ(1, "1 0 2", 1, 0, 2);
+        testCaseMQ(1, "1 0 2", 1, 2, 0);
+        testCaseMQ(1, "1 0 2", 2, 0, 1);
+        testCaseMQ(1, "1 0 2", 2, 1, 0);
+
+        testCaseMQ(2, "2 1 3 0 4", 0, 1, 2, 3, 4);
+        testCaseMQ(0, "0 1", 0, 1);
+
+        testCaseMQ(4, "4 5 3 6 2 7 1 8 0 9", 0, 8, 3, 9, 4, 6, 2, 1, 7, 5);
+        testCaseMQ(4, "4 5 3 6 2 7 1 8 0 9", 0, 1, 2, 3, 4, 5, 6, 7, 8, 9);
+        testCaseMQ(4, "4 3 5 2 6 1 7 0 8", 0, 1, 2, 3, 4, 5, 6, 7, 8);
+    }
+
+    private void testCaseMQ(final int expectedMedian, final String expectedQueue, final Integer... elements) {
+        Queue<Integer> queue = new MedianQueue();
+        assertEquals(0, queue.size());
+
+        stream(elements).forEach(queue::offer);
+
+        assertEquals(Integer.valueOf(expectedMedian), queue.peek());
+        assertEquals(elements.length, queue.size());
+        assertEquals(Integer.valueOf(expectedMedian), queue.peek());
+        assertEquals(expectedQueue, pollQueueToString(queue));
+        assertEquals(0, queue.size());
+
+        final ArrayList<Integer> elementsList = new ArrayList<>(asList(elements));
+        shuffle(elementsList);
+        elementsList.forEach(queue::offer);
+
+        assertEquals("Fail on " + elementsList, Integer.valueOf(expectedMedian), queue.peek());
+        assertEquals(elements.length, queue.size());
+        assertEquals(Integer.valueOf(expectedMedian), queue.peek());
+        assertEquals(expectedQueue, pollQueueToString(queue));
+    }
 
     private String pollQueueToString(final Queue<Integer> queue) {
         return Stream.generate(queue::poll)
